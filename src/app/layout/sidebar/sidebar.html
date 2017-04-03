@@ -1,0 +1,40 @@
+<md-sidenav layout="column" md-component-id="sidebar_left" md-is-locked-open="$mdMedia('gt-md')" md-colors="::{background: 'blue-grey-800', color :'blue-grey-50'}">
+    <md-toolbar md-colors="::{background: 'blue-grey-900'}">
+        <div bstl-auth-view></div>
+    </md-toolbar>
+    <md-content md-colors="::{background: 'blue-grey-800'}">
+        <nav class="menu">
+            <md-button md-colors="::{color :'grey-400'}" ng-repeat="navnode in navnodes" ui-sref="root.documents({node : navnode.id, filter : navnode.data.filter})" ng-click="closeSidebarLeft();" aria-label="{{navnode.data.title || navnode.data.name || navnode.id}}">
+                <span ng-if="navnode.unread > 0" class="chip" md-colors="::{background :'grey-400'}">{{navnode.unread}}</span>
+                <md-icon md-colors="::{color :'grey-400'}">{{(navnode.data.icon ? 'icon.' + navnode.data.icon :'') | synonym}}</md-icon>
+                <span>{{navnode.data.title || navnode.data.name || navnode.id}}</span>
+            </md-button>
+        </nav>
+    </md-content>
+    <span flex></span>
+    <div layout="row" layout-align="space-between">
+        <md-button class="md-icon-button" ui-sref="root.info()" ng-click="closeSidebarLeft()">
+            <md-icon md-colors="::{color : 'grey-400'}">info_outline</md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button" ng-click="previousNavConfig()" ng-disabled="navconfigs.length < 2">
+            <md-icon md-colors="{color : navconfigs.length < 2 ? 'grey-600' : 'grey-400'}">navigate_before</md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button" ng-if="bstl.userId && bstl.userId === uiconfig.author" ng-click="closeSidebarLeft(); editConfig(navconfig)">
+            <md-icon md-colors="::{color : 'grey-400'}">create</md-icon>
+        </md-button>
+
+        <div ng-if="!bstl.userId || bstl.userId !== uiconfig.author" flex></div>
+
+        <md-button class="md-icon-button" ng-click="nextNavConfig()" ng-disabled="navconfigs.length < 2">
+            <md-icon md-colors="{color : navconfigs.length < 2 ? 'grey-600' : 'grey-400'}">navigate_next</md-icon>
+        </md-button>
+
+        <md-button class="md-icon-button" ng-if="bstl.userId" ng-click="closeSidebarLeft(); editConfig(uiconfig)">
+            <md-icon md-colors="::{color : 'grey-400'}">settings</md-icon>
+        </md-button>
+
+        <div ng-if="!bstl.userId" flex></div>
+    </div>
+</md-sidenav>

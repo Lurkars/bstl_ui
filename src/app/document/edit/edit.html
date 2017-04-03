@@ -1,0 +1,31 @@
+<div ng-if="!document.template">
+    <div layout="row" layout-align="start center" layout-margin ng-if="!jsoneditor && document.usersOnEdit && hasPermission('own')">
+        <md-icon class="md-margin">{{'icon.people' | synonym}}</md-icon>
+        <div bstl-datatype-edit="usersPickerStructure" ng-model="document" key="'users'" label="'users'"></div>
+    </div>
+
+    <md-card>
+        <md-card-content>
+            <div class="bstl-json-editor" ng-if="jsoneditor">
+                <textarea bstl-json-bind ng-model="document.data"></textarea>
+            </div>
+
+            <ng-form name="DocumentEditForm{{$id}}" ng-if="!jsoneditor">
+                <div layout="column" layout-padding>
+                    <div ng-repeat="interface in document.meta.interfaces">
+                        <div ng-repeat="(key, value) in document.meta.structure[interface]">
+                            <div bstl-datatype-edit="value" ng-model="document.data" key="key" document="document" label="key"></div>
+                        </div>
+                    </div>
+                    <div ng-repeat="(key, value) in document.structure">
+                        <div bstl-datatype-edit="value" ng-model="document.data" key="key" document="document" label="key"></div>
+                    </div>
+                    <div ng-repeat="(key, value) in document.data" ng-if="!hasStructure(key)">
+                        <div bstl-datatype-edit ng-model="document.data" key="key" document="document" label="key"></div>
+                    </div>
+                </div>
+            </ng-form>
+        </md-card-content>
+    </md-card>
+</div>
+<div ng-if="document.template" bstl-document-view="document"></div>

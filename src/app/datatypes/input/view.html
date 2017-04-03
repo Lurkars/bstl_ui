@@ -1,0 +1,4 @@
+<div ng-controller="DatatypeInputCtrl">
+    <label ng-if="data && !structure.hideLabel">{{label | synonym}}</label>
+    <div ng-if="structure.options.inputType" ng-include="'templates/datatypes/input/' + structure.options.inputType + '/view.html'"></div>
+</div>

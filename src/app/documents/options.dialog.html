@@ -1,0 +1,21 @@
+<md-dialog aria-label="{{'documents.options' | synonym}}">
+    <form name="DocumentsOptionsDialogForm" ng-submit="save()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h4>{{'documents.options' | synonym}}</h4>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" layout-margin>
+
+            <div bstl-documents-options ng-model="model"></div>
+
+        </md-dialog-content>
+        <md-dialog-actions layout-wrap>
+            <md-switch ng-model="model.store" aria-label="{{'documents.options.store' | synonym }}">
+                <span>{{'documents.options.store' | synonym}}</span>
+            </md-switch>
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="DocumentsOptionsDialogForm.$invalid">{{'ok' | synonym}}</md-button>
+            <md-button ng-click="closeDialog()">{{'cancel' | synonym}}</md-button>
+            </md-dialog-action>
+    </form>
+</md-dialog>

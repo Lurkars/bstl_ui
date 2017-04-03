@@ -1,0 +1,24 @@
+<md-bottom-sheet class="md-list md-has-header">
+    <div layout="column">
+        <div layout="row" layout-wrap>
+            <md-list ng-repeat="create in creates" flex="noshrink">
+                <md-subheader ng-cloak>{{create.label | synonym}}</md-subheader>
+                <md-list-item ui-sref="root.document:create({template : create.clone ? undefined : item, clone : create.clone ? item : undefined})" ng-repeat="item in create.documents" aria-label="{{'create' | synonym}}">
+                    <md-icon>{{'icon.note_add' | synonym}}</md-icon>
+                    <p bstl-document-name="item"></p>
+                </md-list-item>
+            </md-list>
+            <md-list ng-if="createContextClone.length > 0 || createContextTemplate.length > 0" flex="noshrink">
+                <md-subheader ng-cloak>{{'create.current' | synonym}}</md-subheader>
+                <md-list-item ng-repeat="provider in createContextTemplate" ng-click="callback(provider)" ng-disabled="provider.working || (provider.properties.isDisabled && provider.context.disabled)" aria-label="{{provider.id | synonym}}">
+                    <md-icon>{{provider.properties.icon}}</md-icon>
+                    <p ng-class="{'hide-xs' : provider.properties.xs, 'hide' : provider.properties.iconButton}">{{provider.properties.label || provider.id | synonym}}</p>
+                </md-list-item>
+                <md-list-item ng-repeat="provider in createContextClone" ng-click="callback(provider)" ng-disabled="provider.working || (provider.properties.isDisabled && provider.context.disabled)" aria-label="{{provider.id | synonym}}">
+                    <md-icon>{{provider.properties.icon}}</md-icon>
+                    <p ng-class="{'hide-xs' : provider.properties.xs, 'hide' : provider.properties.iconButton}">{{provider.properties.label || provider.id | synonym}}</p>
+                </md-list-item>
+            </md-list>
+        </div>
+    </div>
+</md-bottom-sheet>

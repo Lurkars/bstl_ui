@@ -1,0 +1,3 @@
+<div ng-repeat="option in items">
+    <div ng-if="option.properties && option.properties.type" ng-include="'templates/context/options/' + option.properties.type + '.html'"></div>
+</div>

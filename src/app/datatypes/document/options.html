@@ -1,0 +1,47 @@
+<div ng-controller="DatatypeDocumentOptionsCtrl" layout="column">
+
+    <div bstl-datatype-edit="templateFilterStructure" ng-model="structure.options" key="'template'" label="'datatype.document.template'"></div>
+
+    <md-input-container flex="100">
+        <label>{{'datatype.document.requiredPermission' | synonym}}</label>
+        <md-select ng-model="structure.options.requiredPermission" aria-label="{{'datatype.document.requiredPermission' | synonym}}" required>
+            <md-option ng-value="'view'">{{'permissions.view' | synonym}}</md-option>
+            <md-option ng-value="'contribute'">{{'permissions.contribute' | synonym}}</md-option>
+            <md-option ng-value="'edit'">{{'permissions.edit' | synonym}}</md-option>
+            <md-option ng-value="'structure'">{{'permissions.structure' | synonym}}</md-option>
+            <md-option ng-value="'remove'">{{'permissions.remove' | synonym}}</md-option>
+            <md-option ng-value="'own'">{{'permissions.own' | synonym}}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <div layout="row" layout-wrap>
+        <md-switch ng-model="structure.options.users" aria-label="{{'datatype.document.users' | synonym }}">
+            {{'datatype.document.users' | synonym}}
+        </md-switch>
+        <md-switch ng-model="usePermissions" aria-label="{{'datatype.document.usePermissions' | synonym}}">
+            {{'datatype.document.usePermissions' | synonym}}
+        </md-switch>
+        <md-button ng-if="usePermissions" class="md-raised" ng-click="openPermissionsDialog()">
+            <md-icon>{{'icon.lock' | synonym}}</md-icon>
+            {{'datatype.document.permissions' | synonym}}
+        </md-button>
+    </div>
+
+    <div bstl-documents-options ng-model="structure.options"></div>
+
+    <md-switch ng-model="structure.options.showOptions" aria-label="{{'datatype.document.showOptions' | synonym }}">
+        {{'datatype.document.showOptions' | synonym}}
+    </md-switch>
+    <md-switch ng-model="structure.options.createOnView" aria-label="{{'datatype.document.createOnView' | synonym }}">
+        {{'datatype.document.createOnView' | synonym}}
+    </md-switch>
+    <md-switch ng-model="structure.options.bottomCreate" aria-label="{{'datatype.document.bottomCreate' | synonym }}">
+        {{'datatype.document.bottomCreate' | synonym}}
+    </md-switch>
+    <md-switch ng-model="structure.options.hideEmpty" aria-label="{{'datatype.document.hideEmpty' | synonym }}">
+        {{'datatype.document.hideEmpty' | synonym}}
+    </md-switch>
+    <md-switch ng-model="structure.options.singleton" aria-label="{{'datatype.singleton' | synonym }}">
+        {{'datatype.singleton' | synonym}}
+    </md-switch>
+</div>

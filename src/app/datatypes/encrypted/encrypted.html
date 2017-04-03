@@ -1,0 +1,41 @@
+<md-content ng-if="!working && !isWorking() && model.isReady && !model.isDecrypted" layout-margin>
+    <md-subheader class="md-warn">{{'datatype.encrypted.noPlaintext' | synonym}}</md-subheader>
+</md-content>
+
+<div layout="column" ng-if="model.isReady && model.isDecrypted">
+    <md-chips ng-if="model.edit && model.noKeyUsers && model.noKeyUsers.length > 0" ng-model="model.noKeyUsers" md-removable="false" readonly="true">
+        <md-chip-template>
+            <md-icon>{{($chip.access ? 'icon.error' : 'icon.block') | synonym}}</md-icon>
+            <strong>{{$chip.name || $chip.id}}</strong>
+            <em ng-if="$chip.name">{{$chip.id}}</em>
+            <md-button ng-if="$chip.access" class="md-icon-button" ui-sref="root.document.view({id : $chip.id})">
+                <md-icon>{{'icon.find_in_page' | synonym}}</md-icon>
+            </md-button>
+        </md-chip-template>
+    </md-chips>
+
+    <div layout="row" layout-sm="column">
+        <md-input-container ng-if="model.edit" flex>
+            <label>{{'datatype.encrypted.plaintext' | synonym}}</label>
+            <textarea ng-model="model.plaintext" ng-model-options="{ debounce: 500 }" max-rows="12" ng-required="required"></textarea>
+        </md-input-container>
+
+        <div ng-if="!model.edit" flex="100">
+            {{model.plaintext}}
+        </div>
+        <div ng-if="working" flex>
+            <md-progress-circular md-mode="indeterminate" md-diameter="36px"></md-progress-circular>
+        </div>
+    </div>
+</div>
+
+<div flex>
+    <md-button ng-if="!model.isReady && !isWorking()" class="md-raised" ng-click="init()" aria-label="{{'datatype.encrypted.init' | synonym}}">
+        <md-icon>{{'icon.vpn_key' | synonym}}</md-icon>
+        <span>{{'datatype.encrypted.init' | synonym}}</span>
+    </md-button>
+</div>
+
+<div flex>
+    <md-progress-circular ng-show="!model.isReady && isWorking()" md-mode="indeterminate" md-diameter="36px"></md-progress-circular>
+</div>

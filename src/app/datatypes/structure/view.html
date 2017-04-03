@@ -1,0 +1,6 @@
+<label ng-if="data && !structure.hideLabel">{{label | synonym}}</label>
+<div layout="column" layout-padding>
+    <div ng-repeat="(subkey, value) in data">
+        <div bstl-datatype-view="structure.options.structure[subkey]" ng-model="value" label="subkey" excerpt="excerpt" document="document"></div>
+    </div>
+</div>

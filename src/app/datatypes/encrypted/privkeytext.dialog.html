@@ -1,0 +1,26 @@
+<md-dialog aria-label="{{'datatype.encrypted.privateKeyText' | synonym}}">
+    <form name="EncryptedPrivateKeyTextForm" ng-submit="storePrivateKeyText()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h4>{{'datatype.encrypted.privateKeyText' | synonym}}</h4>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" layout-margin>
+            <md-input-container>
+                <label>{{'datatype.encrypted.privateKey' | synonym}}</label>
+                <textarea ng-model="model.privateKeyText" md-autofocus max-rows="12" required></textarea>
+            </md-input-container>
+        </md-dialog-content>
+        <md-dialog-actions layout-wrap>
+            <md-switch ng-model="model.store" aria-label="{{'datatype.encrypted.storePrivateKeyText' | synonym }}">
+                <span>{{'datatype.encrypted.storePrivateKeyText' | synonym}}</span>
+            </md-switch>
+            <div layout="row">
+                <md-button type="submit" class="md-raised md-primary" ng-disabled="!model.privateKeyText || EncryptedPrivateKeyTextForm.$invalid">
+                    {{'ok' | synonym}}
+                </md-button>
+                <md-button ng-click="closeDialog()">{{'cancel' | synonym}}</md-button>
+            </div>
+        </md-dialog-action>
+    </form>
+</md-dialog>

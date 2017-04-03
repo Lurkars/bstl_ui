@@ -1,0 +1,11 @@
+<div ng-controller="DatatypeStructureCtrl">
+    <label>{{label | synonym}}</label>
+    <div layout="column" layout-padding>
+        <div ng-repeat="(subkey, value) in structure.options.structure">
+            <div bstl-datatype-edit="value" ng-model="data[key]" key="subkey" label="subkey" document="document"></div>
+        </div>
+        <div ng-repeat="(subkey, value) in data[key]" ng-if="!structure.options.structure[subkey]">
+            <div bstl-datatype-edit ng-model="data[key]" key="subkey" label="subkey" document="document"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<md-dialog aria-label="{{model.key | synonym}}">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h4>{{model.key | synonym}}</h4>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <ng-form name="DocumentStructureDialogForm{{$id}}">
+            <div layout="column" class="md-dialog-content">
+                <div bstl-datatype-options="model.structure"></div>
+
+                <md-divider ng-if="showClean"></md-divider>
+                <md-switch ng-model="model.clean" ng-if="showClean">
+                    {{'structure.cleanData' | synonym}}
+                </md-switch>
+            </div>
+        </ng-form>
+    </md-dialog-content>
+
+    <md-dialog-actions layout-wrap>
+        <md-button ng-click="save()" class="md-raised md-primary" ng-disabled="DocumentStructureDialogForm.$invalid">{{'save' | synonym}}</md-button>
+        <md-button ng-click="closeDialog()">{{'cancel' | synonym}}</md-button>
+        </md-dialog-action>
+</md-dialog>

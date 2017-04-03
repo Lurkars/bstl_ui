@@ -1,0 +1,27 @@
+<div ng-controller="DatatypePickerEditCtrl" layout="row" layout-align="start center">
+    <md-chips md-require-match="true" bstl-sortable="md-chips-wrap" handle=".icon-drag-handle" draggable="md-chip" ng-model="selection" md-removable="removable" md-max-chips="{{structure.options.singleton ? 2 : ''}}" readonly="readonly" flex>
+        <md-autocomplete md-search-text="query" md-delay="500" md-no-cache="true" md-items="item in getDocuments(query)" md-item-text="item.name || item.id" ng-disabled="structure.options.singleton && selection.length > 0" placeholder="{{label | synonym}}">
+            <md-item-template>
+                <span md-highlight-text="query">{{item.name || item.id}}</span>
+            </md-item-template>
+            <md-not-found>
+                No matches found.
+            </md-not-found>
+        </md-autocomplete>
+
+        <md-chip-template>
+            <md-button class="md-icon-button icon-drag-handle">
+                <md-icon>{{'icon.drag_handle' | synonym}}</md-icon>
+            </md-button>
+            <strong>{{$chip.name || $chip.id}}</strong>
+            <em ng-if="$chip.name">{{$chip.id}}</em>
+            <md-button ng-if="$chip.edit" class="md-icon-button" ui-sref="root.document.edit({id : $chip.id})">
+                <md-icon>{{'icon.create' | synonym}}</md-icon>
+            </md-button>
+        </md-chip-template>
+    </md-chips>
+
+    <md-button class="md-icon-button" aria-label="{{'datatype.picker.editFilter'  | synonym }}" ng-click="editFilter()" flex="initial">
+        <md-icon>{{'icon.filter_list' | synonym }}</md-icon>
+    </md-button>
+</div>

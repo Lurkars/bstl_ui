@@ -1,0 +1,17 @@
+<div layout="row" layout-align="center center" layout-wrap ng-hide="hideEmpty && pagination.total <= pagination.limit">
+    <md-button class="md-icon-button" ng-disabled="currentPage == 1" ng-click="select(1)" hide-xs>
+        <md-icon>{{'icon.first_page' | synonym}}</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" ng-disabled="!maxPages || currentPage == 1" ng-click="newer()">
+        <md-icon>{{'icon.chevron_left' | synonym}}</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" ng-repeat="page in pages | limitTo:maxSize:offset" ng-class="{'md-raised md-primary' : currentPage == page.no}" ng-disabled="currentPage == page.no" ng-click="select(page.no)">
+        {{page.no}}
+    </md-button>
+    <md-button class="md-icon-button" ng-disabled="!maxPages || currentPage == maxPages" ng-click="older()">
+        <md-icon>{{'icon.chevron_right' | synonym}}</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" ng-disabled="currentPage == maxPages" ng-click="select(maxPages)" hide-xs>
+        <md-icon>last_page</<md-icon>
+    </md-button>
+</div>

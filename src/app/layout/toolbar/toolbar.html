@@ -1,0 +1,13 @@
+<md-toolbar>
+    <div class="md-toolbar-tools md-whiteframe-1dp" md-colors="::{background: 'grey-100', color : 'grey-600'}">
+        <md-button class="md-icon-button" md-colors="::{color : 'grey-600'}" hide-gt-md ng-click="toggleSidebarLeft()">
+            <md-icon>{{'icon.menu' | synonym}}</md-icon>
+        </md-button>
+        <div bstl-context="'toolbar_filter'" context="page.context" name="page.name" view="'filter'"></div>
+        <div id="tinymce-toolbar"></div>
+        <span flex></span>
+        <div bstl-context="'toolbar_options'" context="page.context" name="page.name" view="'options'"></div>
+        <div bstl-context="'toolbar_action'" context="page.context" name="page.name" view="'button'"></div>
+        <div bstl-context="'toolbar_menu'" context="page.context" name="page.name" view="'menu'"></div>
+    </div>
+</md-toolbar>

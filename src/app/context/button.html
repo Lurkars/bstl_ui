@@ -1,0 +1,10 @@
+<div layout="row">
+    <md-button ng-repeat="provider in items" ng-click="callback(provider)" ng-disabled="provider.context.working || (provider.properties.isDisabled && provider.context.disabled)" aria-label="{{provider.id | synonym}}" ng-class="[provider.properties.classes, {'md-icon-button' : $mdMedia('xs') && provider.properties.xs || provider.properties.iconButton}]">
+        <div layout="row">
+            <md-icon ng-if="!provider.context.working || !provider.properties.progress">{{provider.properties.icon}}</md-icon>
+            <md-progress-circular ng-if="provider.context.working && provider.properties.progress && provider.context.progress < 100" ng-class="{'md-margin' : !provider.properties.iconButton}" md-mode="determinate" value="{{provider.context.progress}}" md-diameter="24px"></md-progress-circular>
+            <md-progress-circular ng-if="provider.context.working && provider.properties.progress && provider.context.progress >= 100" ng-class="{'md-margin' : !provider.properties.iconButton}" md-mode="indeterminate" md-diameter="24px"></md-progress-circular>
+            <span ng-class="{'hide-xs' : provider.properties.xs, 'hide' : provider.properties.iconButton}">{{provider.properties.label || provider.id | synonym}}</span>
+        </div>
+    </md-button>
+</div>

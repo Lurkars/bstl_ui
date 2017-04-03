@@ -1,0 +1,15 @@
+<div layout="column">
+    <md-toolbar ng-if="structure.options.showOptions && model.initFilter" flex="100">
+        <div class="md-toolbar-tools md-whiteframe-1dp" md-colors="::{background: 'grey-100', color : 'grey-600'}">
+            <div bstl-context="'toolbar_filter'" context="documentsContext" name="'documents'" view="'filter'"></div>
+            <span flex></span>
+            <div bstl-context="'toolbar_options'" context="documentsContext" name="'documents'" view="'options'"></div>
+            <div bstl-context="'toolbar_action'" context="documentsContext" name="'documents'" view="'button'"></div>
+            <div bstl-context="'toolbar_menu'" context="documentsContext" name="'documents'" view="'menu'"></div>
+        </div>
+    </md-toolbar>
+    <div layout-margin>
+        <div ng-if="model.initFilter" bstl-documents filter="model.filter" hide-empty="structure.options.hideEmpty" view="documentsContext.options.view || 'card'" columns="documentsContext.options.columns" rows="documentsContext.options.rows" order="documentsContext.options.order"
+            flex="100"></div>
+    </div>
+</div>

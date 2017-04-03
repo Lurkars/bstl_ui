@@ -1,0 +1,2 @@
+<label ng-if="!structure.hideLabel">{{label || synonym}}</label>
+<a ui-sref="root.documents({filter : data, node : undefined})">{{(structure.options.label || label) | synonym}}</a>

@@ -1,0 +1,26 @@
+<div layout="column">
+    <div layout="row">
+        <md-input-container>
+            <md-checkbox ng-model="structure.hideLabel">
+                {{'datatype.hideLabel' | synonym}}
+            </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+            <md-checkbox ng-model="structure.excerpt">
+                {{'datatype.excerpt' | synonym}}
+            </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+            <md-checkbox ng-model="structure.required">
+                {{'datatype.required' | synonym}}
+            </md-checkbox>
+        </md-input-container>
+    </div>
+    <md-input-container>
+        <label>{{'type' | synonym}}</label>
+        <md-select ng-model="structure.type" required>
+            <md-option ng-value="type" ng-repeat="type in datatypes" ng-disabled="isDatatypeDisabled(type)">{{'datatype.' + type | synonym}}</md-option>
+        </md-select>
+    </md-input-container>
+    <div layout="column" layout-margin ng-if="structure.type" ng-include="'templates/datatypes/' + structure.type + '/options.html'"></div>
+</div>

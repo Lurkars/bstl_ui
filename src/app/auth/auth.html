@@ -1,0 +1,25 @@
+<nav layout="row" layout-align="space-between center" layout-padding>
+    <div class="avatar">
+        <img ng-if="!userAvatar" src="gfx/bstl.png" />
+        <img ng-if="userAvatar" ng-src="{{userAvatar}}" />
+    </div>
+
+    <md-button ng-if="!bstl.userId" md-ripple-size="full" class="md-raised md-primary" type="submit" ng-click="openLoginDialog()" aria-label="{{'auth.login' | synonym }}">{{'auth.login' | synonym}}</md-button>
+
+    <div ng-if="bstl.userId">
+        <md-menu md-position-mode="target-right target" md-offset="0 42">
+            <md-button ng-click="$mdMenu.open($event)" aria-label="{{'auth.usermenu' | synonym }}">
+                <span bstl-document-name="bstl.userId"></span>
+                <md-icon md-colors="::{color : 'grey-300'}">arrow_drop_down</md-icon>
+            </md-button>
+            <md-menu-content>
+                <md-menu-item>
+                    <md-button ui-sref="root.document.edit({id : bstl.userId})" aria-label="{{'auth.settings' | synonym }}"  ng-click="closeSidebarLeft();">{{'auth.settings' | synonym }}</md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="logout()" aria-label="{{'auth.logout' | synonym }}"  ng-click="closeSidebarLeft();">{{'auth.logout' | synonym }}</md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+</nav>

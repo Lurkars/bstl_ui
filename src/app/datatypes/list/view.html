@@ -1,0 +1,13 @@
+
+<label ng-if="data && !structure.hideLabel">{{label | synonym}}</label>
+
+<md-list ng-if="!structure.options.simple">
+	<md-list-item ng-repeat="item in data track by $index">
+		<div bstl-datatype-view="structure.options.structure" ng-model="item" excerpt="excerpt" document="document"></div>
+		<md-divider></md-divider>
+	</md-list-item>
+</md-list>
+
+<md-chips ng-if="structure.options.simple" ng-model="data" readonly="true">
+    <md-chip-template>{{$chip}}</md-chip-template>
+</md-chips>

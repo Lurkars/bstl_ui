@@ -1,0 +1,18 @@
+<div layout="column" ng-if="(!hideEmpty || (model.documents && model.documents.length > 0))">
+
+    <div bstl-pagination ng-model="model.pagination" max-size="model.maxSize" total-items="model.pagination.total" items-per-page="model.pagination.limit" page="model.pagination.page" hide-empty="true" sticky="true" flex></div>
+
+    <div layout="row" layout-wrap>
+        <div ng-repeat="document in model.documents" bstl-document-view="document" context="context" view="view || 'card'" flex="{{model.flex ? model.flex : 100}}"></div>
+    </div>
+
+    <md-card ng-if="model.documents == 0" layout="column" layout-fill layout-align="center center" flex>
+        <md-card-content>
+            {{'nothingFound' | synonym}}
+        </md-card-content>
+    </md-card>
+</div>
+
+<div ng-if="working" layout="row" layout-sm="column" layout-align="space-around">
+    <md-progress-circular md-mode="indeterminate" md-diameter="36px"></md-progress-circular>
+</div>

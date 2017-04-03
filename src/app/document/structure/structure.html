@@ -1,0 +1,90 @@
+<md-card ng-if="jsoneditor">
+    <md-card-content>
+        <div class="bstl-json-editor">
+            <textarea bstl-json-bind ng-model="document.structure"></textarea>
+        </div>
+    </md-card-content>
+</md-card>
+
+<div layout="column" ng-if="!jsoneditor">
+    <div layout="row" ng-if="!hideTemplate">
+        <md-switch ng-model="document.usersOnEdit" aria-label="{{'structure.usersOnEdit'  | synonym }}" flex="initial">
+            {{'structure.usersOnEdit' | synonym}}
+        </md-switch>
+        <md-switch ng-model="document.template" aria-label="{{'structure.isTemplate'  | synonym }}" flex="initial">
+            {{'structure.isTemplate' | synonym}}
+        </md-switch>
+        <md-button ng-if="document.template" flex="initial" ng-click="openTemplatePermissions()">
+            <md-icon>{{'icon.lock' | synonym}}</md-icon>
+            {{'permissions' | synonym}}
+        </md-button>
+        <md-input-container ng-if="document.template" flex="initial">
+            <label>{{'name' | synonym}}</label>
+            <input ng-model="document.data.name" type="text" required/>
+        </md-inpunt-container>
+    </div>
+    <div ng-if="hasPermission('own') && document.interfaces" bstl-datatype-edit="interfacesPickerStructure" ng-model="document" key="'interfaces'" label="'structure.interfaces'"></div>
+    <div ng-if="hasPermission('own')">
+        <md-chips md-require-match="true" bstl-sortable="md-chips-wrap" handle=".icon-drag-handle" draggable="md-chip" ng-model="document.structureKeys" readonly="true" flex>
+          <md-chip-template>
+                <md-button class="md-icon-button icon-drag-handle">
+                    <md-icon>{{'icon.drag_handle' | synonym}}</md-icon>
+                </md-button>
+                <strong>{{$chip}}</strong>
+            </md-chip-template>
+        </md-chips>
+    </div>
+</div>
+
+<div layout="row" layout-padding layout-wrap ng-hide="jsoneditor">
+    <div ng-repeat="(key, value) in document.structure" flex="100" flex-sm="50" flex-gt-sm="33">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{key | synonym}}</span>
+                    <span class="md-subhead">{{'datatype.' + value.type | synonym}}</span>
+                </md-card-title-text>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-icon ng-if="value.excerpt" aria-label="{{'datatype.excerpt' | synonym}}">{{'icon.visibility' | synonym}}</md-icon>
+                    <md-icon ng-if="value.required" aria-label="{{'datatype.required' | synonym}}">{{'icon.priority_high' | synonym}}</md-icon>
+                </md-card-actions>
+            </md-card-title>
+            <md-card-content>
+                <md-list class="md-dense">
+                    <md-list-item class="md-2-line" ng-repeat="(option,value) in value.options">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{option}}</h3>
+                            <p>{{value}}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" ng-click="openStructureDialog(key)" aria-label="{{'structure.edit' | synonym}}">
+                    <md-icon>{{'icon.edit' | synonym}}</md-icon>
+                </md-button>
+                <md-button class="md-icon-button md-warn" ng-click="removeStructure(key)" aria-label="{{'structure.remove' | synonym}}">
+                    <md-icon>{{'icon.delete_forever' | synonym}}</md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <div flex="100" flex-sm="50" flex-gt-sm="33">
+        <md-card>
+            <ng-form name="DocumentStructureForm{{$id}}">
+                <md-card-title>
+                    <md-input-container class="md-headline">
+                        <label>{{'structure.addKey' | synonym}}</label>
+                        <input ng-model="newKey" type="text" />
+                    </md-input-container>
+                </md-card-title>
+                <md-card-content></md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" ng-disabled="invalidKey(newKey)" ng-click="openStructureDialog(newKey)">
+                        <md-icon>{{'icon.add' | synonym}}</md-icon>
+                    </md-button>
+                </md-card-actions>
+            </ng-form>
+        </md-card>
+    </div>
+</div>

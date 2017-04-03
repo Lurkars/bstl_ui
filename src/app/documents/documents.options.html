@@ -1,0 +1,28 @@
+<label>{{'documents.options.view' | synonym}}</label>
+
+<md-select ng-model="model.view" ng-init="model.view = model.view || 'card'" aria-label="{{'documents.options.view' | synonym}}" required>
+    <md-option ng-value="view" ng-repeat="view in views track by $index">
+        {{view | synonym}}
+    </md-option>
+</md-select>
+
+<md-input-container>
+    <label>{{'documents.options.columns' | synonym}}</label>
+    <input ng-model="model.columns" type="number" min="1" max="10" ng-init="model.columns = model.columns || 1" />
+</md-input-container>
+
+<md-input-container>
+    <label>{{'documents.options.rows' | synonym}}</label>
+    <input ng-model="model.rows" type="number" min="1" ng-init="model.rows = model.rows || 5" />
+</md-input-container>
+
+<md-input-container>
+    <label>{{'documents.options.order' | synonym}}</label>
+    <input ng-model="order" />
+</md-input-container>
+
+<md-input-container>
+    <md-checkbox ng-disabled="!order" ng-model="model.order[order+'']" aria-label="{{'documents.options.orderReverse' | synonym}}" ng-true-value="1" ng-false-value="-1">
+        {{'documents.options.orderReverse' | synonym}}
+    </md-checkbox>
+</md-input-container>

@@ -1,0 +1,38 @@
+<md-card ng-if="!document.template">
+    <md-card-title layout="row" layout-align="space-between">
+        <md-card-title-text>
+            <a class="md-headline" ui-sref="root.document.view({id : document.id})">{{document.data && document.data.name || document.id}}</a>
+            <div class="md-subhead">
+                <div>
+                    <a ui-sref="root.document.view({id : document.meta.author})" bstl-document-name="document.meta.author"></a>
+                    <small>{{document.modified | date:'medium'}}</small>
+                </div>
+                <div>
+                    {{document.data && document.data.name && document.id}}
+                    <span ng-include="'templates/document/view/view.type.html'"></span>
+                </div>
+            </div>
+        </md-card-title-text>
+        <md-card-actions layout="row" layout-xs="column" layout-align="end center">
+            <div bstl-context="'toolbar_action'" context="viewContext" name="'document'" view="'button'"></div>
+            <div bstl-context="'toolbar_menu'" context="viewContext" name="'document'" view="'menu'"></div>
+        </md-card-actions>
+    </md-card-title>
+    <md-card-content layout="column" layout-padding>
+        <div ng-repeat="interface in document.meta.interfaces">
+            <div ng-repeat="(key, value) in document.meta.structure[interface]">
+                <div bstl-datatype-view="value" ng-model="document.data[key]" excerpt="true" document="document" label="key"></div>
+            </div>
+        </div>
+        <div ng-repeat="(key, value) in document.meta.structure[document.id]">
+            <div bstl-datatype-view="value" ng-model="document.data[key]" excerpt="true" document="document" label="key"></div>
+        </div>
+        <div ng-repeat="(key, value) in document.data" ng-if="!hasStructure(key)">
+            <div bstl-datatype-view ng-model="document.data[key]" excerpt="true" document="document" label="key"></div>
+        </div>
+    </md-card-content>
+    <md-card-footer layout="row" layout-align="space-between">
+
+    </md-card-footer>
+</md-card>
+<div ng-if="document.template" ng-include="'templates/document/view/views/template.html'"></div>

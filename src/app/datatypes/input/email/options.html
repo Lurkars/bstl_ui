@@ -1,0 +1,14 @@
+<md-input-container>
+    <label>{{'datatype.input.inputType.text.minlength' | synonym}}</label>
+    <input type="number" ng-model="model.options.minlength" min="0" ng-max="model.options.maxlength"/>
+</md-input-container>
+
+<md-input-container>
+    <label>{{'datatype.input.inputType.text.maxlength' | synonym}}</label>
+    <input type="number" ng-model="model.options.maxlength" ng-min="model.options.minlength + 1"/>
+</md-input-container>
+
+<md-input-container>
+    <label>{{'datatype.input.inputType.text.pattern' | synonym}}</label>
+    <input type="text" ng-model="model.options.pattern"/>
+</md-input-container>

@@ -1,0 +1,5 @@
+<md-select ng-model="option.value" ng-init="option.value = option.value || option.properties.defaultValue" ng-change="callback(option)" aria-label="{{option.id | synonym}}" ng-required="isRequired">
+    <md-option ng-value="optionValue" ng-repeat="optionValue in option.properties.options track by $index">
+        {{optionValue | synonym}}
+    </md-option>
+</md-select>

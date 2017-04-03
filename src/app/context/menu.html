@@ -1,0 +1,16 @@
+<md-menu md-position-mode="target-right target" ng-if="items && items.length > 0" md-offset="0 46">
+    <md-button class="md-icon-button" ng-click="$mdMenu.open($event)" ng-disabled="context.working" aria-label="{{'openMenu' | synonym }}">
+        <md-icon md-menu-origin>more_vert</md-icon>
+    </md-button>
+    <md-menu-content width="1">
+        <div ng-repeat="group in groups">
+            <md-menu-item ng-repeat="provider in group">
+                <md-button ng-click="callback(provider)" ng-disabled="provider.context.working" aria-label="{{provider.id | synonym }}">
+                    <md-icon>{{provider.properties.icon}}</md-icon>
+                    {{provider.id | synonym}}
+                </md-button>
+            </md-menu-item>
+            <md-divider ng-if="!$last"></md-divider>
+        </div>
+    </md-menu-content>
+</md-menu>

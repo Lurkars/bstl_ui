@@ -1,0 +1,16 @@
+<md-dialog aria-label="{{'datatype.filter' | synonym}}">
+    <form name="FilterDialogForm" ng-submit="save()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h4>{{'datatype.filter' | synonym}}</h4>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" layout-margin>
+            <div bstl-datatype-edit="filterStructure" ng-model="model" key="'filter'"></div>
+        </md-dialog-content>
+        <md-dialog-actions layout-wrap>
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="FilterDialogForm.$invalid">{{'ok' | synonym}}</md-button>
+            <md-button ng-click="closeDialog()">{{'cancel' | synonym}}</md-button>
+        </md-dialog-action>
+    </form>
+</md-dialog>

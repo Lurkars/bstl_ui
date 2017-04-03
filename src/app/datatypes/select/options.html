@@ -1,0 +1,19 @@
+<div layout="column" ng-controller="DatatypeSelectCtrl">
+    <label>{{'datatype.structure' | synonym}}</label>
+    <div bstl-datatype-options="structure.options.structure"></div>
+
+    <md-input-container>
+        <md-checkbox ng-model="structure.options.onView" ng-change="structure.options.tabs = structure.options.onView ? structure.options.tabs : false">
+            {{'datatype.select.onView' | synonym}}
+        </md-checkbox>
+    </md-input-container>
+    <md-input-container>
+        <md-checkbox ng-disabled="!structure.options.onView" ng-model="structure.options.tabs">
+            {{'datatype.select.tabs' | synonym}}
+        </md-checkbox>
+    </md-input-container>
+    <div ng-if=" !structure.options.onView">
+        <label>{{'datatype.select.options' | synonym}}</label>
+        <div ng-if="optionsStructure" bstl-datatype-edit="optionsStructure" ng-model="structure.options" key="'options'"></div>
+    </div>
+</div>

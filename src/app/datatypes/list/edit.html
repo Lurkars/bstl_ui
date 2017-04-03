@@ -1,0 +1,34 @@
+<div ng-controller="DatatypeListCtrl">
+    <label>{{label | synonym}}</label>
+    <div ng-if="!structure.options.simple">
+        <div layout="column" layout-padding>
+            <ng-form isolate-form name="DatatypeListForm{{$id}}">
+                <div bstl-datatype-edit="structure.options.structure" ng-model="listModel" key="'new'"></div>
+                <div layout="row">
+                    <md-button ng-click="addItem()" class="md-raised md-primary" ng-disabled="DatatypeListForm.$invalid">
+                        <md-icon>{{'icon.add' | synonym}}</md-icon> {{'datatype.list.addItem' | synonym}}
+                    </md-button>
+                </div>
+            </ng-form>
+            <md-list bstl-sortable ng-model="data[key]" handle=".drag-handle">
+                <md-list-item ng-repeat="item in data[key] track by $index" layout="row">
+                    <div bstl-datatype-view="structure.options.structure" ng-model="item" ng-if="!edit[$index]" document="document" flex></div>
+                    <div bstl-datatype-edit="structure.options.structure" ng-model="data[key]" key="$index" ng-if="edit[$index]" document="document" flex></div>
+                    <md-icon ng-click="edit[$index] = !edit[$index]" aria-label="{{'datatype.list.editItem' | synonym}}" class="md-secondary">{{edit[$index] ? 'pageview' : 'create'}}</md-icon>
+                    <md-icon ng-click="removeItem(item)" aria-label="{{'datatype.list.removeItem' | synonym}}" class="md-secondary">delete</md-icon>
+                    <md-icon ng-click="" class="drag-handle md-secondary" aria-label="{{'datatype.list.dragHandle' | synonym}}">drag_handle</md-icon>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </div>
+    </div>
+
+    <md-chips ng-if="structure.options.simple" ng-model="data[key]" md-removable="true" md-max-chips="structure.options.max" bstl-sortable="md-chips-wrap" handle=".icon-drag-handle" draggable="md-chip">
+        <md-chip-template>
+            <md-button class="md-icon-button icon-drag-handle">
+                <md-icon>{{'icon.drag_handle' | synonym}}</md-icon>
+            </md-button>
+            {{$chip}}
+        </md-chip-template>
+    </md-chips>
+</div>

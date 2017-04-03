@@ -1,0 +1,178 @@
+<md-dialog aria-label="{{'permissions' | synonym}}">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h4>{{'permissions' | synonym}}</h4>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout="column" layout-margin>
+        <ng-form name="PermissionsForm{{$id}}">
+            <div layout="row" layout-align="center center" ng-if="!hideUsers">
+                <md-icon class="md-margin">{{'icon.people' | synonym}}</md-icon>
+                <div layout-fill bstl-datatype-edit="userpicker" ng-model="model" key="'users'" label="'permission.users'"></div>
+            </div>
+            <div layout="row" layout-padding layout-align="center center">
+                <div flex="noshrink">
+                    <md-switch ng-model="model.template" ng-disabled="model.template == 'public'" ng-true-value="'public'" aria-label="{{'permissions.public' | synonym }}">
+                        <md-icon>{{'icon.public' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.public' | synonym}}</span>
+                    </md-switch>
+                </div>
+                <div flex="noshrink">
+                    <md-switch ng-model="model.template" ng-disabled="model.template == 'restricted'" ng-true-value="'restricted'" aria-label="{{'permissions.restricted' | synonym }}">
+                        <md-icon>{{'icon.people_outline' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.restricted' | synonym}}</span>
+                    </md-switch>
+                </div>
+                <div flex="noshrink">
+                    <md-switch ng-model="model.template" ng-disabled="model.template == 'private'" ng-true-value="'private'" aria-label="{{'permissions.private' | synonym }}">
+                        <md-icon>{{'icon.people' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.private' | synonym}}</span>
+                    </md-switch>
+                </div>
+                <div flex="noshrink">
+                    <md-switch ng-model="model.extended" ng-disabled="model.template == ''" aria-label="{{'permissions.advanced' | synonym }}">
+                        <md-icon>{{'icon.settings' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.advanced' | synonym}}</span>
+                    </md-switch>
+                </div>
+            </div>
+
+            <md-content layout="column" ng-show="model.extended">
+                <div layout="row" layout-align="center center">
+                    <!-- title -->
+                    <div flex></div>
+                    <div flex>
+                        <md-icon>{{'icon.person' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.author' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-icon>{{'icon.people' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.users' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-icon>{{'icon.people_outline' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.other' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-icon>{{'icon.public' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.public' | synonym}}</span>
+                    </div>
+                </div>
+
+                <div layout="row" layout-align="center center">
+                    <!-- view -->
+                    <div flex>
+                        <md-icon>{{'icon.find_in_page' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.view' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.view.a" aria-label="{{'permissions.view' | synonym }} {{'permissions.author' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.view.u" aria-label="{{'permissions.view' | synonym }} {{'permissions.users' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.view.o" aria-label="{{'permissions.view' | synonym }} {{'permissions.other' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.view.p" aria-label="{{'permissions.view' | synonym }} {{'permissions.public' | synonym }}"></md-switch>
+                    </div>
+                </div>
+
+                <div layout="row" layout-align="center center">
+                    <!-- contribute -->
+                    <div flex>
+                        <md-icon>{{'icon.flag' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.contribute' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.contribute.a" aria-label="{{'permissions.contribute' | synonym }} {{'permissions.author' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.contribute.u" aria-label="{{'permissions.contribute' | synonym }} {{'permissions.users' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.contribute.o" aria-label="{{'permissions.contribute' | synonym }} {{'permissions.other' | synonym }}"></md-switch>
+                    </div>
+                    <div flex></div>
+                </div>
+
+                <div layout="row" layout-align="center center">
+                    <!-- edit -->
+                    <div flex>
+                        <md-icon>{{'icon.create' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.edit' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.edit.a" aria-label="{{'permissions.edit' | synonym }} {{'permissions.author' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.edit.u" aria-label="{{'permissions.edit' | synonym }} {{'permissions.users' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.edit.o" aria-label="{{'permissions.edit' | synonym }} {{'permissions.other' | synonym }}"></md-switch>
+                    </div>
+                    <div flex></div>
+                </div>
+
+                <div layout="row" layout-align="center center">
+                    <!-- structure -->
+                    <div flex>
+                        <md-icon>{{'icon.build' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.structure' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.structure.a" aria-label="{{'permissions.structure' | synonym }} {{'permissions.author' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.structure.u" aria-label="{{'permissions.structure' | synonym }} {{'permissions.users' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.structure.o" aria-label="{{'permissions.structure' | synonym }} {{'permissions.other' | synonym }}"></md-switch>
+                    </div>
+                    <div flex></div>
+                </div>
+
+                <div layout="row" layout-align="center center">
+                    <!-- remove -->
+                    <div flex>
+                        <md-icon>{{'icon.delete' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.remove' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.remove.a" aria-label="{{'permissions.remove' | synonym }} {{'permissions.author' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.remove.u" aria-label="{{'permissions.remove' | synonym }} {{'permissions.users' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.remove.o" aria-label="{{'permissions.remove' | synonym }} {{'permissions.other' | synonym }}"></md-switch>
+                    </div>
+                    <div flex></div>
+                </div>
+
+                <div layout="row" layout-align="center center">
+                    <!-- own -->
+                    <div flex>
+                        <md-icon>{{'icon.lock' | synonym}}</md-icon>
+                        <span class="hide-xs hide-sm">{{'permissions.own' | synonym}}</span>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.own.a" aria-label="{{'permissions.own' | synonym }} {{'permissions.author' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.own.u" aria-label="{{'permissions.own' | synonym }} {{'permissions.users' | synonym }}"></md-switch>
+                    </div>
+                    <div flex>
+                        <md-switch ng-model="model.permissions.own.o" aria-label="{{'permissions.own' | synonym }} {{'permissions.other' | synonym }}"></md-switch>
+                    </div>
+                    <div flex></div>
+                </div>
+            </md-content>
+        </ng-form>
+    </md-dialog-content>
+    <md-dialog-actions layout-wrap>
+        <md-button ng-click="updatePermissions()" class="md-raised md-primary" ng-disabled="PermissionsForm.$invalid || working">{{'permissions.update' | synonym}}</md-button>
+        <md-button ng-click="closeDialog()">{{'cancel' | synonym}}</md-button>
+        </md-dialog-action>
+</md-dialog>

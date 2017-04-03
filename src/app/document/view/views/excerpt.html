@@ -1,0 +1,27 @@
+<md-card>
+    <md-card-title layout="row" layout-align="space-between">
+        <md-card-title-text>
+            <a ui-sref="root.document.view({id : document.meta.author})" bstl-document-name="document.meta.author"></a>
+        </md-card-title-text>
+        <md-card-actions layout="row" layout-xs="column" layout-align="end center">
+            <div bstl-context="'toolbar_action'" context="viewContext" name="'document'" view="'button'"></div>
+            <div bstl-context="'toolbar_menu'" context="viewContext" name="'document'" view="'menu'"></div>
+        </md-card-actions>
+    </md-card-title>
+    <md-card-content layout="column" layout-padding layout-align="space-between">
+        <div ng-repeat="interface in document.meta.interfaces">
+            <div ng-repeat="(key, value) in document.meta.structure[interface]">
+                <div bstl-datatype-view="value" ng-model="document.data[key]" excerpt="true" document="document" label="key"></div>
+            </div>
+        </div>
+        <div ng-repeat="(key, value) in document.meta.structure[document.id]">
+            <div bstl-datatype-view="value" ng-model="document.data[key]" excerpt="true" document="document" label="key"></div>
+        </div>
+        <div ng-repeat="(key, value) in document.data" ng-if="!hasStructure(key)">
+            <div bstl-datatype-view ng-model="document.data[key]" excerpt="true" document="document" label="key"></div>
+        </div>
+    </md-card-content>
+    <md-card-footer layout="row" layout-align="space-between">
+        <small>{{document.modified | date:'medium'}}</small>
+    </md-card-footer>
+</md-card>

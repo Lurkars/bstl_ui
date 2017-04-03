@@ -1,0 +1,9 @@
+<md-switch ng-model="structure.options.singleton" aria-label="{{'datatype.singleton' | synonym }}">
+    {{'datatype.singleton' | synonym}}
+</md-switch>
+
+<md-switch ng-model="structure.options.editFilter" aria-label="{{'datatype.picker.filterEditable'  | synonym }}">
+    {{'datatype.picker.filterEditable' | synonym}}
+</md-switch>
+
+<div bstl-datatype-edit="{type : 'filter'}" ng-model="structure.options" key="'filter'"></div>

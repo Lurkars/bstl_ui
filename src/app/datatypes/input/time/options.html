@@ -1,0 +1,9 @@
+<md-input-container>
+    <label>{{'datatype.input.inputType.time.min' | synonym}}</label>
+    <input type="time" ng-model="structure.options.min" ng-max="structure.options.max"/>
+</md-input-container>
+
+<md-input-container>
+    <label>{{'datatype.input.inputType.time.max' | synonym}}</label>
+    <input type="time" ng-model="structure.options.max" ng-min="structure.options.min"/>
+</md-input-container>

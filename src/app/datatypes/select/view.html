@@ -1,0 +1,28 @@
+<div ng-controller="DatatypeSelectViewCtrl">
+    <label ng-if="data && !structure.hideLabel">{{label | synonym}}</label>
+
+    <div ng-if="!structure.options.onView">
+        <div bstl-datatype-view="structure.options.structure" ng-model="data" excerpt="excerpt" document="document"></div>
+    </div>
+
+    <div ng-if="structure.options.onView">
+        <div ng-if="!structure.options.tabs">
+            <md-input-container>
+                <label>{{'datatype.select.select' | synonym}}</label>
+                <md-select ng-model="model" aria-label="{{'datatype.select.select' | synonym}}" ng-required="isRequired">
+                    <md-option ng-value="option.value" ng-repeat="option in data.options">
+                        {{option.label | synonym}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <div bstl-datatype-view="structure.options.structure" ng-model="model"></div>
+        </div>
+        <div ng-if="structure.options.tabs">
+            <md-tabs md-selected="data.default" md-border-bottom md-dynamic-height="true">
+                <md-tab ng-repeat="option in data.options" label="{{option.label | synonym}}">
+                    <div bstl-datatype-view="structure.options.structure" ng-model="option.value"></div>
+                </md-tab>
+            </md-tabs>
+        </div>
+    </div>
+</div>

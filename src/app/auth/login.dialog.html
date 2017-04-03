@@ -1,0 +1,32 @@
+<md-dialog aria-label="{{'auth.login' | synonym}}">
+   <form name="AuthLoginForm{{$id}}" ng-submit="login()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h4>{{'auth.login' | synonym}}</h4>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div layout="column" class="md-dialog-content">
+                <md-input-container>
+                    <label>{{'auth.loginname' | synonym}}</label>
+                    <input type="text" ng-model="model.loginname" aria-label="{{'auth.loginname' | synonym }}" required md-autofocus/>
+                </md-input-container>
+                <md-input-container>
+                    <label>{{'auth.password' | synonym}}</label>
+                    <input type="password" ng-model="model.password" aria-label="{{'auth.password' | synonym }}" required/>
+                    <div ng-messages ng-if="loginError">
+                        <div ng-message>
+                            {{'auth.error' | synonym}}
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout-wrap>
+            <md-button type="submit" ng-click="login()" ng-disabled="AuthLoginForm.$invalid" aria-label="{{'auth.login' | synonym }}" class="md-raised md-primary">{{'auth.login' | synonym}}</md-button>
+            <md-button ng-click="closeDialog()" aria-label="{{'auth.cancel' | synonym }}">{{'auth.cancel' | synonym}}</md-button>
+        </md-dialog-action>
+    </form>
+</md-dialog>

@@ -1,0 +1,5 @@
+<md-radio-group ng-model="data[key]">
+    <md-radio-button ng-repeat="option in structure.options.options" ng-value="option" aria-label="{{label | synonym}}">
+        <div bstl-datatype-view="structure.options.structure" ng-model="option"></div>
+    </md-radio-button>
+</md-radio-group>

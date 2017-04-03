@@ -1,0 +1,4 @@
+<div layout="column" ng-controller="DatatypeEncryptedViewCtrl">
+    <label ng-if="data && !structure.hideLabel">{{label | synonym}}</label>
+    <div bstl-datatype-encrypted="model" ng-model="data" document="document" label="label"></div>
+</div>

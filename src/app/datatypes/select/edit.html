@@ -1,0 +1,28 @@
+<div ng-controller="DatatypeSelectEditCtrl">
+    <label>{{label | synonym}}</label>
+    <div ng-if="!structure.options.onView">
+        <md-input-container>
+            <md-select ng-model="data[key]" aria-label="{{label || 'datatype.select.select' | synonym}}" ng-required="isRequired">
+                <md-option ng-value="option.value" ng-repeat="option in structure.options.options track by $index">
+                    {{option.label | synonym}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <div bstl-datatype-view="structure.options.structure" ng-model="data[key]"></div>
+    </div>
+
+    <div ng-if="structure.options.onView" layout="column" layout-margin ng-controller="DatatypeSelectCtrl">
+        <md-input-container>
+            <label>{{'datatype.select.default' | synonym}}</label>
+            <md-select ng-model="data[key].default" aria-label="{{'datatype.select.default' | synonym}}">
+                <md-option ng-value="$index" ng-repeat="option in data[key].options track by $index">
+                    {{option.label | synonym}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+        <label>{{'datatype.select.options' | synonym}}</label>
+        <div ng-if="optionsStructure" bstl-datatype-edit="optionsStructure" ng-model="data[key]" key="'options'"></div>
+    </div>
+
+</div>

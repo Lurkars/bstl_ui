@@ -1,0 +1,6 @@
+<div ng-controller="DatatypeInputRadioCtrl">
+    <label>{{'datatype.structure' | synonym}}</label>
+    <div bstl-datatype-options="structure.options.structure"></div>
+    <label>{{'datatype.input.inputType.radio.options' | synonym}}</label>
+    <div ng-if="optionsStructure" bstl-datatype-edit="optionsStructure" ng-model="structure.options" key="'options'"></div>
+</div>

@@ -1,0 +1,17 @@
+
+<md-input-container>
+    <label>{{'datatype.list.min' | synonym}}</label>
+    <input type="number" ng-model="structure.options.min" ng-max="structure.options.max"/>
+</md-input-container>
+
+<md-input-container>
+    <label>{{'datatype.list.max' | synonym}}</label>
+    <input type="number" ng-model="structure.options.max" ng-min="structure.options.min + 1"/>
+</md-input-container>
+
+<md-switch ng-model="structure.options.simple" aria-label="{{'datatype.list.simple'  | synonym }}">
+    {{'datatype.list.simple' | synonym}}
+</md-switch>
+
+<label ng-if="!structure.options.simple">{{'datatype.list.structure' | synonym}}</label>
+<div ng-if="!structure.options.simple" bstl-datatype-options="structure.options.structure"></div>

@@ -1,0 +1,14 @@
+<md-input-container>
+    <label>{{'datatype.input.inputType.range.min' | synonym}}</label>
+    <input type="number" ng-model="structure.options.min" ng-max="structure.options.max" required/>
+</md-input-container>
+
+<md-input-container>
+    <label>{{'datatype.input.inputType.range.max' | synonym}}</label>
+    <input type="number" ng-model="structure.options.max" ng-min="structure.options.min + 1" required/>
+</md-input-container>
+
+<md-input-container>
+    <label>{{'datatype.input.inputType.range.step' | synonym}}</label>
+    <input type="number" ng-model="structure.options.step" ng-max="structure.options.max - structure.options.min" required/>
+</md-input-container>

@@ -1,0 +1,17 @@
+<md-card>
+    <md-card-title>
+        <md-card-title-text>
+            <a class="md-headline" ui-sref="root.document.structure({id : document.id})">{{document.data && document.data.name || document.id}}</a>
+            <span class="md-subhead">{{document.data && document.data.name && document.id}}
+                <span ng-include="'templates/document/view/view.type.html'"></span>
+            </span>
+        </md-card-title-text>
+        <md-card-actions layout="row" layout-align="end center">
+            <div bstl-context="'toolbar_menu'" context="viewContext" name="'document'" view="'menu'"></div>
+        </md-card-actions>
+    </md-card-title>
+    <md-card-footer layout="row" layout-align="space-between">
+        <a ui-sref="root.document.view({id : document.meta.author})" bstl-document-name="document.meta.author"></a>
+        <small>{{document.modified | date:'medium'}}</small>
+    </md-card-footer>
+</md-card>

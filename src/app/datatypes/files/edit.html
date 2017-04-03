@@ -1,0 +1,28 @@
+<div layout="column" ng-controller="DatatypeFilesEditCtrl">
+    <label>{{ label| synonym}}</label>
+
+    <div layout="row">
+        <md-list flex="100" flex-gt-sm="50">
+            <md-list-item ng-repeat="(filekey,file) in data[key].files" aria-label="{{file.name}}">
+                <md-icon>{{'icon.attach_file' | synonym}}</md-icon>
+                <p>
+                    <a ng-href="{{apiUrl}}/document/{{document.id}}/file/{{filekey}}" target="_blank">{{file.name}}</a>
+                </p>
+                <small>{{file.size | filesize}}</small>
+                <md-icon class="md-secondary" ng-click="removeFile(filekey)" aria-label="{{'remove' | synonym}}">delete</md-icon>
+            </md-list-item>
+            <md-divider ng-if="data[key] && data[key].$filesToUpload"></md-divider>
+            <md-list-item ng-repeat="file in data[key].$filesToUpload" aria-label="{{file.name}}">
+                <md-icon>{{'icon.attachment' | synonym}}</md-icon>
+                <p>{{file.name}}</p>
+                <small>{{file.size | filesize}}</small>
+                <md-icon class="md-secondary" ng-click="removeFileToUpload(file)" aria-label="{{'remove' | synonym}}">delete</md-icon>
+            </md-list-item>
+        </md-list>
+    </div>
+
+    <div ng-hide="structure.options.singleton && hasFile()">
+        <label for="fileinput-{{document.id}}-{{key}}" class="md-button md-raised">{{structure.options.singleton ? 'datatype.files.chooseFile' : 'datatype.files.chooseFiles' | synonym}}</label>
+        <input class="hide" id="fileinput-{{document.id}}-{{key}}" type="file" bstl-datatype-file ng-model="data[key]" singleton="{{structure.options.singleton}}" accept="{{structure.options.accept}}" aria-label="{{ label| synonym}}" />
+    </div>
+</div>

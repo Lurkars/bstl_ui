@@ -1,0 +1,7 @@
+<md-input-container>
+    <md-icon ng-if="filter.properties.icon">{{'icon.' + filter.properties.icon | synonym}}</md-icon>
+    <label>{{filter.id | synonym}}</label>
+    <input ng-model="filter.value" type="text" ng-change="callback(filter)" ng-model-options="{ debounce: 500 }" />
+    <md-icon ng-if="filter.value" ng-click="filter.value = ''; callback(filter);">{{'icon.clear' | synonym}}</md-icon>
+    <md-icon ng-if="!filter.value"></md-icon>
+</md-input-container>

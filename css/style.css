@@ -1,0 +1,110 @@
+a {
+    color: #00BCD4;
+}
+
+.avatar img {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+
+.menu {
+    padding-top: 16px;
+}
+
+.menu .md-button {
+text-overflow: ellipsis;
+    display: block;
+    margin: 0;
+    padding: 8px 4px 8px 40px;
+    text-align: left;
+}
+
+.menu .md-button md-icon {
+    margin-right: 32px;
+}
+
+.menu .md-button .chip {
+    float: right;
+    border-radius: 16px;
+    margin: 4px 4px 0 0;
+    padding: 0 8px;
+    color: #424242;
+    line-height: 24px;
+    z-index: 10;
+}
+
+.create-menu {
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+}
+
+label {
+    font-weight: bold;
+}
+
+md-input-container .md-errors-spacer {
+    min-height: 0;
+}
+
+md-dialog md-dialog-actions {
+    height: auto;
+}
+
+.bstl-json-editor, .bstl-json-editor textarea {
+    font-family: monospace;
+    width: 100%;
+    min-height: 200px;
+}
+
+.md-chips.md-readonly {
+    box-shadow: none;
+}
+
+md-chip-template .md-button.md-icon-button {
+    line-height: 25px;
+    width: 25px;
+    height: 25px;
+    min-height: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+@media (min-width: 960px) {
+    md-bottom-sheet {
+        margin-left: 8.33%;
+        margin-right: 9.33%;
+    }
+}
+
+@media (min-width: 1280px) {
+    md-bottom-sheet {
+        margin-left: 12.5%;
+        margin-right: 12.5%;
+    }
+}
+
+@media (min-width: 1440px) {
+    md-bottom-sheet {
+        margin-left: 16.66%;
+        margin-right: 16.66%;
+    }
+}
+
+.mce-content-body {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+
+.mce-content-body:focus {
+    outline: none;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(169, 169, 169);
+}
+
+#tinymce-toolbar .mce-panel, #tinymce-toolbar .mce-btn {
+    border: none;
+    background: none;
+}

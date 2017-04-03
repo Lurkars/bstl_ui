@@ -1,0 +1,20 @@
+<md-dialog aria-label="{{title | synonym}}">
+   <form name="ConfirmDialogForm{{$id}}" ng-submit="confirm()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h4>{{title | synonym}}</h4>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div layout="column" class="md-dialog-content">
+                <span ng-bind-html="(text | synonym)"></span>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout-wrap>
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="ConfirmDialogForm.$invalid" md-autofocus>{{'confirm' | synonym}}</md-button>
+            <md-button ng-click="closeDialog()">{{'cancel' | synonym}}</md-button>
+        </md-dialog-action>
+    </form>
+</md-dialog>

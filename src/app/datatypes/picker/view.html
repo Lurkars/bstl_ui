@@ -1,0 +1,14 @@
+<div ng-controller="DatatypePickerViewCtrl">
+    <label ng-if="selection && !structure.hideLabel">{{label | synonym}}</label>
+    <ng-form>
+        <md-chips ng-model="selection" md-removable="false" readonly="true">
+            <md-chip-template ui-sref="root.document.view({id : $chip.id})">
+                <strong>{{$chip.name || $chip.id}}</strong>
+                <em ng-if="$chip.name">{{$chip.id}}</em>
+                <md-button class="md-icon-button" >
+                    <md-icon>{{'icon.find_in_page' | synonym}}</md-icon>
+                </md-button>
+            </md-chip-template>
+        </md-chips>
+    </ng-form>
+</div>

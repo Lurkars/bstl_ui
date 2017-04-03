@@ -1,0 +1,18 @@
+<div ng-controller="DatatypeFilterCtrl">
+    <label>{{label | synonym}}</label>
+   <ng-form name="DatatypeFilterExpressionForm">
+        <div>
+            <md-button ng-if="!model" ng-click="createFilter()">
+                <md-icon>{{'icon.add' | synonym}}</md-icon>
+                {{'datatype.filter.create' | synonym}}
+            </md-button>
+
+            <md-button ng-if="model && !structure.required" ng-click="removeFilter()" aria-label="{{'datatype.filter.empty' | synonym}}">
+                <md-icon>{{'icon.delete' | synonym}}</md-icon>
+                {{'datatype.filter.empty' | synonym}}
+            </md-button>
+        </div>
+
+        <div ng-if="model" bstl-datatype-filter-expression ng-model="model"></div>
+    </ng-form>
+</div>

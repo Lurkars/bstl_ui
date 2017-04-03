@@ -1,0 +1,12 @@
+
+<ng-form name="CreateForm{{$id}}">
+    <div ng-if="page.context.create === 'edit' && !page.context.jsoneditor" bstl-document-edit="page.context.document"></div>
+    <div ng-if="page.context.create === 'structure' && !page.context.jsoneditor" bstl-document-structure="page.context.document"></div>
+    <md-card ng-if="page.context.jsoneditor">
+        <md-card-content>
+            <div class="bstl-json-editor">
+                <textarea bstl-json-bind ng-model="page.context.document"></textarea>
+            </div>
+        </md-card-content>
+    </md-card>
+</ng-form>

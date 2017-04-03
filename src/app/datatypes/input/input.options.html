@@ -1,0 +1,8 @@
+<md-input-container>
+    <label>{{'datatype.input.inputType' | synonym}}</label>
+    <md-select ng-model="structure.options.inputType" required>
+        <md-option ng-value="option" ng-repeat="option in inputTypes">{{'datatype.input.inputType.' + option | synonym}}</md-option>
+    </md-select>
+</md-input-container>
+
+<div layout="column" layout-margin ng-if="structure.options.inputType" ng-include="'templates/datatypes/input/' + structure.options.inputType + '/options.html'"></div>

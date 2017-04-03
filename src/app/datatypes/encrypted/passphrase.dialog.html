@@ -1,0 +1,22 @@
+<md-dialog aria-label="{{'datatype.encrypted.decryptPrivateKey' | synonym}}">
+    <form name="EncryptedPassphraseForm" ng-submit="save()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h4>{{'datatype.encrypted.decryptPrivateKey' | synonym}}</h4>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" layout-margin>
+          <md-input-container>
+            <label>{{'datatype.encrypted.passphrase' | synonym}}</label>
+            <input ng-model="model.passphrase" md-autofocus required type="password" />
+          </md-input-container>
+        </md-dialog-content>
+        <md-dialog-actions layout-wrap>
+            <md-switch ng-model="model.store" aria-label="{{'datatype.encrypted.storePassphrase' | synonym }}">
+                <span>{{'datatype.encrypted.storePassphrase' | synonym}}</span>
+            </md-switch>
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="!model.passphrase || EncryptedPassphraseForm.$invalid">{{'ok' | synonym}}</md-button>
+            <md-button ng-click="closeDialog()">{{'cancel' | synonym}}</md-button>
+        </md-dialog-action>
+    </form>
+</md-dialog>

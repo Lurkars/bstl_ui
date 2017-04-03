@@ -1,0 +1,6 @@
+<div ng-if="document && model.document && canCreate">
+    <div bstl-document-edit="model.document" hide-user="structure.options.users"></div>
+    <md-button class="md-raised" ng-click="createDocument()" ng-disabled="!model.document || DatatypeDocumentEditForm.$invalid || working">
+        {{'datatype.document.createDocument' | synonym:(structure.options.template | synonym)}}
+    </md-button>
+</div>

@@ -1,0 +1,16 @@
+<div layout="column" ng-controller="DatatypeFilesViewCtrl">
+    <label ng-if="data && !structure.hideLabel">{{label | synonym}}</label>
+
+    <div layout="row" >
+        <md-list flex="100" flex-gt-sm="50">
+          <md-list-item ng-repeat="(filekey,file) in data.files" ng-href="{{apiUrl}}/document/{{document.id}}/file/{{filekey}}"  aria-label="{{file.name}}"  target="_blank"><md-icon>{{'icon.attach_file' | synonym}}</md-icon>
+            <p>{{file.name}}</p>
+            <small>{{file.size | filesize}}</small>
+          </md-list-item>
+        </md-list>
+    </div>
+
+    <md-list>
+        <md-list-item ng-repeat="file in data.$filesToUpload" aria-label="{{file.name}}"><md-icon>{{'icon.attachment' | synonym}}</md-icon>{{file.name}}</md-list-item>
+    </md-list>
+</div>

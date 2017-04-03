@@ -1,0 +1,16 @@
+<div layout="column" ng-controller="DatatypeCustomOptionsCtrl">
+    <md-input-container>
+        <label>{{'datatype.custom.type' | synonym}}</label>
+        <input type="text" ng-model="structure.options.typeCustom" aria-label="{{'datatype.custom.type' | synonym }}" required/>
+    </md-input-container>
+
+    <md-input-container>
+        <label>{{'datatype.custom.view' | synonym}}</label>
+        <textarea ng-model="structure.options.typeView" aria-label="{{'datatype.custom.view' | synonym }}" max-rows="12" required></textarea>
+    </md-input-container>
+
+    <md-input-container>
+        <label>{{'datatype.custom.edit' | synonym}}</label>
+        <textarea ng-model="structure.options.typeEdit" aria-label="{{'datatype.custom.edit' | synonym }}" max-rows="12" required></textarea>
+    </md-input-container>
+</div>

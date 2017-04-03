@@ -1,0 +1,10 @@
+<div ng-controller="DatatypeInputPasswordCtrl">
+    <md-input-container>
+        <label>{{label | synonym}}</label>
+        <input ng-model="data[key]" type="password" ng-required="isRequired" ng-minlength="structure.options.minlength" ng-maxlength="structure.options.maxlength" ng-pattern="structure.options.pattern"/>
+    </md-input-container>
+    <md-input-container>
+        <label>{{'datatype.input.inputType.password.repeat' | synonym:(label | synonym)}}</label>
+        <input ng-model="password.repeat" type="password" ng-pattern="regexscape(data[key])" ng-required="data[key] && data[key] !== ''"/>
+    </md-input-container>
+</div>

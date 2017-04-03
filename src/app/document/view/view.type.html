@@ -1,0 +1,9 @@
+<span ng-if="document.type || (document.interfaces && document.interfaces.length > 0)">
+    <span>[</span>
+    <span ng-if="!document.type" ng-repeat="interface in document.interfaces">
+        <a ui-sref="root.document.view({id : interface})">{{interface}}</a>
+        <span ng-if="!$last && document.interfaces.length > 1">,</span>
+    </span>
+    <span><a ui-sref="root.document.view({id : document.type})">{{document.type}}</a></span>
+    <span>]</span>
+</span>

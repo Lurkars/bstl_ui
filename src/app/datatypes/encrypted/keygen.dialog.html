@@ -1,0 +1,44 @@
+<md-dialog aria-label="{{'datatype.encrypted.genKeys' | synonym}}">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h4>{{'datatype.encrypted.genKeys' | synonym}}</h4>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout="column" layout-margin>
+
+        <form name="EncryptedGenKeysForm{{$id}}" ng-submit="genKeys(model.passphrase)">
+            <div ng-if="!working" layout="row" layout-xs="column" layout-align="start start">
+                <div bstl-datatype-edit="passphraseStructure" ng-model="model" key="'passphrase'" label="'datatype.encrypted.passphrase'"></div>
+                <md-button class="md-raised" type="submit" ng-disabled="EncryptedGenKeysForm.$invalid || working">
+                    <md-icon>{{'icon.vpn_key' | synonym}}</md-icon>
+                    {{'datatype.encrypted.genKeys' | synonym}}
+                </md-button>
+            </div>
+        </form>
+
+        <div layout="row" layout-sm="column" layout-align="space-around" ng-if="working">
+            <md-progress-circular md-mode="indeterminate" md-diameter="36px"></md-progress-circular>
+        </div>
+
+        <div layout="column" ng-if="model.privateKeyText">
+            <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                    <h2><span>{{'datatype.encrypted.privKeyInfo' | synonym}}</span></h2>
+                    <span flex></span>
+                    <md-button ng-click="clipboard()" class="md-fab md-mini" aria-label="{{'datatype.encrypted.clipboard' | synonym}}">
+                        <md-icon>{{'icon.content_copy' | synonym}}</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <textarea layout-fill rows="12" readonly>{{model.privateKeyText}}</textarea>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout-wrap>
+        <md-switch ng-model="model.store" aria-label="{{'datatype.encrypted.storePrivateKeyText' | synonym }}">
+            <span>{{'datatype.encrypted.storePrivateKeyText' | synonym}}</span>
+        </md-switch>
+        <md-button class="md-raised md-primary" ng-click="saveKey();" ng-disabled="!model.privateKeyText || !model.publicKeyText || working">{{'ok' | synonym}}</md-button>
+        <md-button ng-click="closeDialog()">{{'cancel' | synonym}}</md-button>
+        </md-dialog-action>
+</md-dialog>

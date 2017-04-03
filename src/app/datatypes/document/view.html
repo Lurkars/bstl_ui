@@ -1,0 +1,9 @@
+<ng-form isolate-form name="DatatypeDocumentEditForm{{$id}}" layout="column" ng-controller="DatatypeDocumentEditCtrl">
+    <div layout="column">
+      <label ng-if="!structure.hideLabel && (!model.empty || (canCreate && structure.options.createOnView))">{{label | synonym}}</label>
+
+      <div ng-if="structure.options.createOnView" ng-include="'templates/datatypes/document/create.html'" flex="100"></div>
+
+      <div ng-include="'templates/datatypes/document/documents.html'" flex="100"></div>
+    </div>
+</ng-form>
